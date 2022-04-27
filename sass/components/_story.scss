@@ -1,0 +1,82 @@
+.story {
+  width: 75%;
+  margin: 0 auto;
+  box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
+  background-image: linear-gradient(
+    rgba($color-white, 0.6),
+    rgba($color-white, 0.6)
+  );
+  // background-color: #fff;
+  border-radius: 3px;
+  padding: 6rem;
+  padding-left: 9rem;
+  font-size: $default-font-size;
+  transform: skewX(-12deg);
+
+  & > * {
+    transform: skewX(12deg);
+    
+    @include respond(phone){
+      transform: skewx(0);
+    }
+  }
+
+@include respond(tablet-portrait){
+  width: 100%;
+  padding: 4rem;
+  padding-left: 7rem;
+}
+
+@include respond(phone){
+  transform: skewx(0);
+}
+
+  &__shape {
+    width: 15rem;
+    height: 15rem;
+    float: left;
+    shape-outside: circle(50% at 50% 50%);
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+    transform: translateX(-3rem) skewX(12deg);
+    position: relative;
+    overflow: hidden;
+    @include respond(phone){
+      transform: skewx(0);
+      margin-right: 1rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__img {
+    height: 100%;
+    transform: translateX(-3.5rem) scale(1.4);
+    transition: all 0.4s;
+  }
+
+  &__caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 20%);
+    color: $color-white;
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    text-align: center;
+    opacity: 0;
+    transition: all 0.5s;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  &:hover &__caption {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  &:hover &__img {
+    transform: translateX(-4rem) scale(1);
+    -webkit-filter: blur(3px) brightness(80%);
+    filter: blur(3px) brightness(80%);
+  }
+}
